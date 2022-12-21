@@ -1,6 +1,7 @@
 const ModbusRTU = require("modbus-serial");
 
 const NIBE_DEFAULT_CLIENT_ID = 30;
+const NIBE_VENTILATION_SPEED_REG = 14;
 
 const round = (value, precision) => {
     const multiplier = Math.pow(10, precision || 0);
@@ -8,7 +9,7 @@ const round = (value, precision) => {
 }
 const readVentilationSpeed = async (client) => {
 	try {
-		const result = client.readHoldingRegisters(0, 2);
+		const result = await client.readHoldingRegisters(NIBE_VENTILATION_SPEED_REG, 1);
 		if (result && result.data && result.data.length === 1) {
 			return result.data[0];
 		} else {
