@@ -4,7 +4,7 @@ const NIBE_DEFAULT_CLIENT_ID = 30;
 const NIBE_VENTILATION_SPEED_REG = 14;
 
 const op = process.argv[2];
-const speed = process.argv[3];
+const speed = process.argv[3] ? process.argv[3] : 0;
 const speedSlow = 0;
 const speedMedium = 1;
 const speedHigh = 2;
